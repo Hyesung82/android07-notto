@@ -6,7 +6,6 @@ buildscript {
         coroutineVersion = "1.5.2"
         lifecycleVersion = "2.4.0"
         navigationVersion = "2.3.5"
-        firebaseRealtimeDb = 'https://notto-74be8-default-rtdb.asia-southeast1.firebasedatabase.app/'
     }
 
     repositories {
@@ -20,9 +19,6 @@ buildscript {
 
         // Google Services plugin
         classpath 'com.google.gms:google-services:4.3.10'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 

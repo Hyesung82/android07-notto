@@ -1,10 +1,8 @@
 package com.gojol.notto.ui.popular
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gojol.notto.util.database
 
 class PopularViewModel : ViewModel() {
 
@@ -13,15 +11,12 @@ class PopularViewModel : ViewModel() {
 
     fun fetchKeywords() {
         val list = mutableListOf<PopularKeyword>()
-        var index = 1
-
-        Log.d("PopularViewModel", "database: $database")
 
         database.get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
             it.children.forEach { child ->
                 if (child.key != null && child.value != null) {
-                    list.add(PopularKeyword(index++, child.key!!, (child.value!! as Long).toInt()))
+                    list.add(PopularKeyword(0, child.key!!, (child.value!! as Long).toInt()))
                 }
             }
         }.addOnFailureListener{
