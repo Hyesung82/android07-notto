@@ -26,3 +26,7 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Access FIREBASE_DB_URL
+      env:
+        FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
+      run: echo db_url=\"$FIREBASE_DB_URL\" > ./local.properties
