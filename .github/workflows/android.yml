@@ -15,17 +15,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Access FIREBASE_DB_URL
+      env:
+        FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
+      run: echo db_url=\"$FIREBASE_DB_URL\" > ./local.properties
+
     - name: set up JDK 11
       uses: actions/setup-java@v2
       with:
         java-version: '11'
         distribution: 'adopt'
         cache: gradle
-
-    - name: Access FIREBASE_DB_URL
-      env:
-        FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
-      run: echo db_url=\"$FIREBASE_DB_URL\" > ./local.properties
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
