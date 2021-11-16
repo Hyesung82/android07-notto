@@ -15,6 +15,8 @@ class PopularViewModel : ViewModel() {
         val list = mutableListOf<PopularKeyword>()
         var index = 1
 
+        Log.d("PopularViewModel", "database: $database")
+
         database.get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
             it.children.forEach { child ->
